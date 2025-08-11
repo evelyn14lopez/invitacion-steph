@@ -1,0 +1,37 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  scroll-snap-align: start;
+}
+
+/* Clase única para no colisionar con .section global */
+.details-section {
+  min-height: 100vh;                /* centra como las otras secciones */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
+  text-align: center;
+  background: transparent;          /* deja ver el fondo floral de app-root */
+  font-family: var(--font-body);
+}
+
+.details-section h2 {
+  font-family: var(--font-heading);
+  color: var(--primary-color);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.details-section p {
+  font-size: 1.2rem;
+  color: var(--text-color);
+  line-height: 1.6;
+  margin: 0.25rem 0;
+}
+
+/* un poco más de aire entre fila y fila en móvil */
+@media (max-width: 600px) {
+  .details-section p { margin: 0.35rem 0; }
+}

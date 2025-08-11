@@ -1,0 +1,32 @@
+
+:host {
+  display: block;
+  min-height: 100vh;
+  scroll-snap-align: start;
+
+}
+
+.welcome-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
+  text-align: center;
+  font-family: var(--font-body);
+}
+
+.welcome-section h2 {
+  font-family: var(--font-heading);
+  color: var(--primary-color);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.welcome-section p {
+  font-size: 1.2rem;
+  color: var(--text-color);
+  max-width: 600px;
+  line-height: 1.6;
+}

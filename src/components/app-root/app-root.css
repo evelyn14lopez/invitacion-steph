@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Georgia&display=swap');
+
+:root {
+  --primary-color: #4FA3B0;        /* Turquesa suave */
+  --secondary-color: #F0F9FA;      /* Fondo claro casi blanco azulado */
+  --accent-color: #709FA3;         /* Verde azulado medio */
+  --text-color: #2e3d42;           /* Azul grisáceo oscuro */
+  --font-heading: 'Great Vibes', cursive;
+  --font-body: 'Georgia', serif;
+  --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+/* Fondo general con scroll secciones */
+
+.scroll-container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  background-image: url('/assets/img/flores.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-color: #fdfdfc; /* Opcional */
+}
+
+/* Títulos románticos */
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 0.8rem;
+}
+
+/* Textos normales */
+p, span {
+  font-family: var(--font-body);
+  text-align: center;
+  color: var(--text-color);
+}
+
+/* Botones suaves */
+.button {
+  background-color: var(--primary-color);
+  color: white;
+  font-family: var(--font-body);
+  padding: 0.6rem 1.4rem;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: var(--box-shadow);
+  transition: background-color 0.3s ease;
+  display: inline-block;
+}
+
+.button:hover {
+  background-color: var(--accent-color);
+}
+
+/* Secciones */
+.section {
+  scroll-snap-align: start;
+  padding: 4rem 1rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Cuenta regresiva */
+.countdown {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.countdown div {
+  background: white;
+  border-radius: 12px;
+  padding: 1rem;
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  box-shadow: var(--box-shadow);
+  min-width: 70px;
+  text-align: center;
+}
+
+/* Íconos especiales */
+.icon {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+/* Mapa embebido */
+.map iframe {
+  border: none;
+  width: 100%;
+  max-width: 500px;
+  height: 300px;
+  border-radius: 12px;
+  box-shadow: var(--box-shadow);
+}
+
+/* Línea del tiempo */
+.timeline {
+  position: relative;
+  padding: 2rem 0;
+  width: 90%;
+  max-width: 600px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  background-color: var(--accent-color);
+  transform: translateX(-50%);
+}
+
+.timeline-event {
+  position: relative;
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.timeline-event::before {
+  content: '♥';
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  background: white;
+  border-radius: 50%;
+  padding: 0.2rem 0.6rem;
+  position: absolute;
+  left: 50%;
+  top: -1rem;
+  transform: translateX(-50%);
+  box-shadow: var(--box-shadow);
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .countdown {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .map iframe {
+    height: 250px;
+  }
+
+  .timeline::before {
+    left: 5%;
+  }
+
+  .timeline-event::before {
+    left: 5%;
+    transform: translateX(0);
+  }
+}

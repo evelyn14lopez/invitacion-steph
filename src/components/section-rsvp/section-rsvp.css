@@ -1,0 +1,66 @@
+:host{
+  display:block;
+  min-height:100vh;
+}
+
+.rsvp{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:1.5rem 1rem;
+  text-align:center;
+  background:transparent !important;
+  font-family:var(--font-body);
+}
+
+/* tarjetita */
+.card{
+  width:min(680px,92%);
+  background:#fff;
+  border-radius:16px;
+  box-shadow:var(--box-shadow);
+  padding:clamp(1.25rem,4vw,2rem);
+}
+
+.card h2{
+  font-family:var(--font-heading);
+  color:var(--primary-color);
+  font-size:clamp(1.9rem,4.8vw,2.4rem);
+  margin-bottom:.75rem;
+}
+
+.card p{
+  color:var(--text-color);
+  font-size:clamp(1rem,3.5vw,1.125rem);
+  line-height:1.6;
+  margin:0 auto 1.25rem;
+}
+
+.btn{
+  display:inline-block;
+  background-color:var(--primary-color);
+  color:#fff;
+  font-family:var(--font-body);
+  padding:.85rem 1.6rem;
+  border-radius:28px;
+  font-size:1rem;
+  text-decoration:none;
+  box-shadow:var(--box-shadow);
+  transition:background-color .25s ease, transform .15s ease;
+}
+.btn:hover{
+  background-color:var(--accent-color);
+  transform:translateY(-1px);
+}
+
+.note{
+  display:block;
+  margin-top:.9rem;
+  color:#6b7a80;
+  font-size:.9rem;
+}
+
+@media (max-width:600px){
+  .card{ border-radius:14px; }
+}

@@ -18,9 +18,12 @@ export const config: Config = {
     {
       type: 'www',
       serviceWorker: null, // disable service workers
+      copy: [
+        { src: 'assets', dest: 'assets' }, // 👈 Copia src/assets → www/assets
+      ],
     },
   ],
   testing: {
-    browserHeadless: "shell",
+    browserHeadless: 'shell',
   },
 };

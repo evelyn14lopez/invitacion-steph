@@ -6,56 +6,188 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
+    interface AppRoot {
+    }
+    interface BackgroundMusic {
+    }
+    interface CountdownTimer {
+    }
+    interface EnvelopeIntro {
+    }
+    interface FloralIntro {
+    }
+    interface GuestMessages {
+    }
+    interface PhotoCarousel {
+    }
+    interface SectionCouple {
+    }
+    interface SectionDetails {
+    }
+    interface SectionLocation {
+    }
+    interface SectionRsvp {
+    }
+    interface SectionTimeline {
+    }
+    interface SectionWelcome {
     }
 }
 declare global {
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {
     }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
+    var HTMLAppRootElement: {
+        prototype: HTMLAppRootElement;
+        new (): HTMLAppRootElement;
+    };
+    interface HTMLBackgroundMusicElement extends Components.BackgroundMusic, HTMLStencilElement {
+    }
+    var HTMLBackgroundMusicElement: {
+        prototype: HTMLBackgroundMusicElement;
+        new (): HTMLBackgroundMusicElement;
+    };
+    interface HTMLCountdownTimerElement extends Components.CountdownTimer, HTMLStencilElement {
+    }
+    var HTMLCountdownTimerElement: {
+        prototype: HTMLCountdownTimerElement;
+        new (): HTMLCountdownTimerElement;
+    };
+    interface HTMLEnvelopeIntroElement extends Components.EnvelopeIntro, HTMLStencilElement {
+    }
+    var HTMLEnvelopeIntroElement: {
+        prototype: HTMLEnvelopeIntroElement;
+        new (): HTMLEnvelopeIntroElement;
+    };
+    interface HTMLFloralIntroElement extends Components.FloralIntro, HTMLStencilElement {
+    }
+    var HTMLFloralIntroElement: {
+        prototype: HTMLFloralIntroElement;
+        new (): HTMLFloralIntroElement;
+    };
+    interface HTMLGuestMessagesElement extends Components.GuestMessages, HTMLStencilElement {
+    }
+    var HTMLGuestMessagesElement: {
+        prototype: HTMLGuestMessagesElement;
+        new (): HTMLGuestMessagesElement;
+    };
+    interface HTMLPhotoCarouselElement extends Components.PhotoCarousel, HTMLStencilElement {
+    }
+    var HTMLPhotoCarouselElement: {
+        prototype: HTMLPhotoCarouselElement;
+        new (): HTMLPhotoCarouselElement;
+    };
+    interface HTMLSectionCoupleElement extends Components.SectionCouple, HTMLStencilElement {
+    }
+    var HTMLSectionCoupleElement: {
+        prototype: HTMLSectionCoupleElement;
+        new (): HTMLSectionCoupleElement;
+    };
+    interface HTMLSectionDetailsElement extends Components.SectionDetails, HTMLStencilElement {
+    }
+    var HTMLSectionDetailsElement: {
+        prototype: HTMLSectionDetailsElement;
+        new (): HTMLSectionDetailsElement;
+    };
+    interface HTMLSectionLocationElement extends Components.SectionLocation, HTMLStencilElement {
+    }
+    var HTMLSectionLocationElement: {
+        prototype: HTMLSectionLocationElement;
+        new (): HTMLSectionLocationElement;
+    };
+    interface HTMLSectionRsvpElement extends Components.SectionRsvp, HTMLStencilElement {
+    }
+    var HTMLSectionRsvpElement: {
+        prototype: HTMLSectionRsvpElement;
+        new (): HTMLSectionRsvpElement;
+    };
+    interface HTMLSectionTimelineElement extends Components.SectionTimeline, HTMLStencilElement {
+    }
+    var HTMLSectionTimelineElement: {
+        prototype: HTMLSectionTimelineElement;
+        new (): HTMLSectionTimelineElement;
+    };
+    interface HTMLSectionWelcomeElement extends Components.SectionWelcome, HTMLStencilElement {
+    }
+    var HTMLSectionWelcomeElement: {
+        prototype: HTMLSectionWelcomeElement;
+        new (): HTMLSectionWelcomeElement;
     };
     interface HTMLElementTagNameMap {
-        "my-component": HTMLMyComponentElement;
+        "app-root": HTMLAppRootElement;
+        "background-music": HTMLBackgroundMusicElement;
+        "countdown-timer": HTMLCountdownTimerElement;
+        "envelope-intro": HTMLEnvelopeIntroElement;
+        "floral-intro": HTMLFloralIntroElement;
+        "guest-messages": HTMLGuestMessagesElement;
+        "photo-carousel": HTMLPhotoCarouselElement;
+        "section-couple": HTMLSectionCoupleElement;
+        "section-details": HTMLSectionDetailsElement;
+        "section-location": HTMLSectionLocationElement;
+        "section-rsvp": HTMLSectionRsvpElement;
+        "section-timeline": HTMLSectionTimelineElement;
+        "section-welcome": HTMLSectionWelcomeElement;
     }
 }
 declare namespace LocalJSX {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
+    interface AppRoot {
+    }
+    interface BackgroundMusic {
+    }
+    interface CountdownTimer {
+    }
+    interface EnvelopeIntro {
+    }
+    interface FloralIntro {
+    }
+    interface GuestMessages {
+    }
+    interface PhotoCarousel {
+    }
+    interface SectionCouple {
+    }
+    interface SectionDetails {
+    }
+    interface SectionLocation {
+    }
+    interface SectionRsvp {
+    }
+    interface SectionTimeline {
+    }
+    interface SectionWelcome {
     }
     interface IntrinsicElements {
-        "my-component": MyComponent;
+        "app-root": AppRoot;
+        "background-music": BackgroundMusic;
+        "countdown-timer": CountdownTimer;
+        "envelope-intro": EnvelopeIntro;
+        "floral-intro": FloralIntro;
+        "guest-messages": GuestMessages;
+        "photo-carousel": PhotoCarousel;
+        "section-couple": SectionCouple;
+        "section-details": SectionDetails;
+        "section-location": SectionLocation;
+        "section-rsvp": SectionRsvp;
+        "section-timeline": SectionTimeline;
+        "section-welcome": SectionWelcome;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
+            "background-music": LocalJSX.BackgroundMusic & JSXBase.HTMLAttributes<HTMLBackgroundMusicElement>;
+            "countdown-timer": LocalJSX.CountdownTimer & JSXBase.HTMLAttributes<HTMLCountdownTimerElement>;
+            "envelope-intro": LocalJSX.EnvelopeIntro & JSXBase.HTMLAttributes<HTMLEnvelopeIntroElement>;
+            "floral-intro": LocalJSX.FloralIntro & JSXBase.HTMLAttributes<HTMLFloralIntroElement>;
+            "guest-messages": LocalJSX.GuestMessages & JSXBase.HTMLAttributes<HTMLGuestMessagesElement>;
+            "photo-carousel": LocalJSX.PhotoCarousel & JSXBase.HTMLAttributes<HTMLPhotoCarouselElement>;
+            "section-couple": LocalJSX.SectionCouple & JSXBase.HTMLAttributes<HTMLSectionCoupleElement>;
+            "section-details": LocalJSX.SectionDetails & JSXBase.HTMLAttributes<HTMLSectionDetailsElement>;
+            "section-location": LocalJSX.SectionLocation & JSXBase.HTMLAttributes<HTMLSectionLocationElement>;
+            "section-rsvp": LocalJSX.SectionRsvp & JSXBase.HTMLAttributes<HTMLSectionRsvpElement>;
+            "section-timeline": LocalJSX.SectionTimeline & JSXBase.HTMLAttributes<HTMLSectionTimelineElement>;
+            "section-welcome": LocalJSX.SectionWelcome & JSXBase.HTMLAttributes<HTMLSectionWelcomeElement>;
         }
     }
 }

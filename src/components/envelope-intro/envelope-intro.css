@@ -1,0 +1,59 @@
+:host {
+  display: block;
+}
+
+.envelope-wrapper {
+  position: fixed;
+  z-index: 9999;
+  background-color: var(--secondary-color, #f5f9f6);
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.8s ease;
+  font-family: var(--font-body, 'Georgia', serif);
+  padding: 1rem;
+}
+
+.envelope-wrapper.opened {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.envelope {
+  text-align: center;
+  animation: pulse 2s infinite;
+}
+
+.envelope .emoji {
+  font-size: 4rem;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.envelope p {
+  font-size: 1.5rem;
+  font-family: var(--font-heading, 'Great Vibes', cursive);
+  color: var(--primary-color, #6d8b74);
+}
+
+/* Animación sutil */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Responsivo para pantallas pequeñas */
+@media (max-width: 480px) {
+  .envelope .emoji {
+    font-size: 3rem;
+  }
+
+  .envelope p {
+    font-size: 1.3rem;
+  }
+}
