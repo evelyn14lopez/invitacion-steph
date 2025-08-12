@@ -4,7 +4,7 @@
   scroll-snap-align: start;
   background-color: transparent;
 
-  /* Este truco obliga al host a alinear contenido al centro */
+  /*  obliga al host a alinear contenido al centro */
   display: flex;
   justify-content: center;
   align-items: center;

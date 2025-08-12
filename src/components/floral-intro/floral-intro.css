@@ -4,7 +4,6 @@
   scroll-snap-align: start;
 }
 
-/* NO pintes fondo aquí: deja ver el del app-root */
 .intro {
   min-height: 100vh;
   position: relative;
@@ -13,17 +12,15 @@
   justify-content: center;
   text-align: center;
   padding: 2rem 1rem;
-  background: transparent !important;   /* ← clave para quitar el “corte” */
+  background: transparent !important;
   overflow: hidden;
 }
 
-/* Desactiva la capa que metía un fondo propio */
 .flowers {
-  display: none;                        /* o remove este div del TSX */
+  display: none;
   pointer-events: none;
 }
 
-/* Solo la tarjeta de texto, sin alterar el fondo global */
 .content {
   z-index: 1;
   max-width: 90%;

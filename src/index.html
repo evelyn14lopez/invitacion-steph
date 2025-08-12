@@ -6,42 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Tipografía romántica -->
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body class="no-js">
-  <!-- Overlay del sobre (encima de todo) -->
-  <envelope-intro id="overlay-envelope"></envelope-intro>
+  <body>
+    <!-- Overlay del sobre -->
+    <envelope-intro id="overlay-envelope"></envelope-intro>
 
-  <!-- La app SIEMPRE está presente (no la ocultes con display:none) -->
-  <app-root></app-root>
+    <!-- Tu app siempre visible debajo -->
+    <app-root></app-root>
 
-  <!-- Bundles de Stencil (necesarios tanto en dev como en build/preview) -->
-  <script type="module" src="/build/app.esm.js"></script>
-  <script nomodule src="/build/app.js"></script>
+    <!-- Scripts de Stencil (namespace: invitacion-steph) -->
+    <script type="module" src="./build/invitacion-steph.esm.js"></script>
+    <script nomodule src="./build/invitacion-steph.js"></script>
 
-  <script>
-    // Progresive enhancement: si hay JS, quitamos la clase no-js
-    document.documentElement.classList.remove('no-js');
+    <script>
+      const overlay = document.getElementById("overlay-envelope");
+      const removeOverlay = () =>
+        overlay && overlay.parentNode && overlay.parentNode.removeChild(overlay);
 
-    // Utilidades
-    const overlay = document.getElementById('overlay-envelope');
-    const showApp = () => { overlay?.parentNode && overlay.remove(); };
-
-    // 1) Quitar overlay cuando el sobre dispare el evento
-    window.addEventListener('envelopeOpened', showApp, { once: true });
-
-    // 2) Fallback: si el evento no llega en 3s (por cualquier motivo), mostramos la app igual
-    window.addEventListener('DOMContentLoaded', () => {
-      setTimeout(() => {
-        if (document.getElementById('overlay-envelope')) showApp();
-      }, 3000);
-    });
-  </script>
-
-  <noscript>
-    <!-- Si no hay JS, al menos mostramos la app -->
-    <style> #overlay-envelope{ display:none!important; } </style>
-  </noscript>
-</body>
-
+      // Cuando el sobre se “abre”, lo quitamos
+      window.addEventListener("envelopeOpened", removeOverlay, { once: true });
+    </script>
+  </body>
 </html>

@@ -2,22 +2,35 @@
   display: block;
 }
 
+/* Overlay a pantalla completa */
 .envelope-wrapper {
   position: fixed;
+  inset: 0;
   z-index: 9999;
+
+  /* Color de fondo (puedes personalizar) */
   background-color: var(--secondary-color, #f5f9f6);
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  left: 0;
+
+  /* Si quieres un fondo floral, descomenta:
+     background-image: var(--app-bg-image, url('/assets/img/flores.png'));
+     background-size: cover;
+     background-position: center;
+  */
+
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: opacity 0.8s ease;
-  font-family: var(--font-body, 'Georgia', serif);
   padding: 1rem;
+
+  /* Bloqueo de scroll mientras está visible */
+  overscroll-behavior: contain;
+
+  /* Efecto de entrada y salida */
+  opacity: 1;
+  transition: opacity 0.5s ease; /* Debe coincidir con JS (500ms) */
 }
 
+/* Al abrir: fade out y no captura interacciones */
 .envelope-wrapper.opened {
   opacity: 0;
   pointer-events: none;
@@ -26,18 +39,28 @@
 .envelope {
   text-align: center;
   animation: pulse 2s infinite;
+  user-select: none;
+  cursor: pointer;
 }
 
 .envelope .emoji {
   font-size: 4rem;
   display: block;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .envelope p {
   font-size: 1.5rem;
   font-family: var(--font-heading, 'Great Vibes', cursive);
-  color: var(--primary-color, #6d8b74);
+  color: var(--primary-color, #4FA3B0);
+  margin: 0 0 .25rem;
+}
+
+.hint {
+  display: block;
+  font-family: var(--font-body, 'Georgia', serif);
+  font-size: .9rem;
+  color: rgba(0, 0, 0, 0.5);
 }
 
 /* Animación sutil */
@@ -47,12 +70,11 @@
   100% { transform: scale(1); }
 }
 
-/* Responsivo para pantallas pequeñas */
+/* Responsive */
 @media (max-width: 480px) {
   .envelope .emoji {
     font-size: 3rem;
   }
-
   .envelope p {
     font-size: 1.3rem;
   }
