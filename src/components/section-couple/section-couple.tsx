@@ -8,11 +8,13 @@ import { Component, h } from '@stencil/core';
 export class SectionCouple {
   render() {
     return (
-      <div class="section-couple">
-        <h2>Con amor...</h2>
-        <p>Nombre de Novia 💕 Nombre del Novio</p>
-        <p>Estamos felices de celebrar este día contigo</p>
-      </div>
+      <section class="couple">
+        <div class="container">
+          <h2>Con amor...</h2>
+          <p class="names">Nombre de Novia <span class="heart">♥</span> Nombre del Novio</p>
+          <p class="subtitle">Estamos felices de celebrar este día contigo</p>
+        </div>
+      </section>
     );
   }
 }

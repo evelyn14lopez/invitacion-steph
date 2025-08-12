@@ -8,9 +8,11 @@ import { Component, h } from '@stencil/core';
 export class SectionWelcome {
   render() {
     return (
-      <section class="welcome-section">
-        <h2>Bienvenida</h2>
-        <p>Nos emociona compartir este día contigo.</p>
+      <section class="welcome">
+        <div class="container">
+          <h2>Bienvenida</h2>
+          <p>Nos emociona compartir este día contigo.</p>
+        </div>
       </section>
     );
   }

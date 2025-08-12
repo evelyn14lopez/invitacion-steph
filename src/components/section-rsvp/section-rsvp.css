@@ -1,38 +1,52 @@
 :host{
   display:block;
-  min-height:100vh;
+  height:100dvh;                 /* estable en móvil */
+  scroll-snap-align:start;
+  scroll-snap-stop:always;
+  box-sizing:border-box;
 }
 
 .rsvp{
-  min-height:100vh;
+  height:100%;
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:1.5rem 1rem;
   text-align:center;
+  padding:2rem 1rem;
   background:transparent !important;
-  font-family:var(--font-body);
 }
 
-/* tarjetita */
+/* Tarjeta translúcida (igual que timeline/photo-carousel) */
 .card{
+  position:relative;
+  z-index:1;
   width:min(680px,92%);
-  background:#fff;
-  border-radius:16px;
-  box-shadow:var(--box-shadow);
+  background:rgba(255,255,255,.12);   /* MUY transparente */
+  backdrop-filter:blur(3px);
   padding:clamp(1.25rem,4vw,2rem);
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.18);
+  box-shadow:0 8px 20px rgba(0,0,0,.06);
+  animation:fadeInUp .9s ease-out;
+
+  /* evita que crezca y provoque “salto” de snap */
+  max-height:calc(100% - 2rem);
+  overflow:auto;
 }
 
 .card h2{
+  text-align:center;
   font-family:var(--font-heading);
   color:var(--primary-color);
-  font-size:clamp(1.9rem,4.8vw,2.4rem);
-  margin-bottom:.75rem;
+  font-size:clamp(2rem,6vw,2.4rem);
+  margin:0 0 .75rem;
+  letter-spacing:.3px;
 }
 
 .card p{
+  font-family:var(--font-body);
   color:var(--text-color);
-  font-size:clamp(1rem,3.5vw,1.125rem);
+  font-size:clamp(1rem,3.4vw,1.125rem);
   line-height:1.6;
   margin:0 auto 1.25rem;
 }
@@ -63,4 +77,9 @@
 
 @media (max-width:600px){
   .card{ border-radius:14px; }
+}
+
+@keyframes fadeInUp{
+  from{ opacity:0; transform:translateY(24px); }
+  to{ opacity:1; transform:translateY(0); }
 }

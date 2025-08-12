@@ -1,217 +1,177 @@
-:host {
-  display: block;
-  min-height: 100vh;
-  scroll-snap-align: start;
+:host{
+  display:block;
+  height:100dvh;
+  scroll-snap-align:start;
+  scroll-snap-stop:always;
+  box-sizing:border-box;
 }
 
-/* Sección coherente con el resto (centrada, fondo floral visible) */
-.timeline-section {
-  min-height: 100vh;
-  background: transparent !important;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;      /* centrado por defecto */
-  align-items: center;
-  padding: 1.5rem 1rem;
-  text-align: center;
-  font-family: var(--font-body);
+/* Contenedor centrado */
+.timeline-section{
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:2rem 1rem;
+  background:transparent !important;
 }
 
-/* Título romántico */
-.timeline-section h2 {
-  font-family: var(--font-heading);
-  color: var(--primary-color);
-  font-size: 2.2rem;
-  margin-bottom: 0.9rem;
+/* -------- Tarjeta MUY translúcida, sin halo blanco -------- */
+.card{
+  position:relative;
+  z-index:1;
+  width:min(900px,95%);
+  background:rgba(255,255,255,.12);      /* más transparente */
+  backdrop-filter:blur(3px);             /* legibilidad sin blanquear */
+  padding:clamp(1.25rem,4vw,2rem);
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.18);/* filo sutil (opcional) */
+  box-shadow:0 8px 20px rgba(0,0,0,.06); /* sombra normal, sin halo */
+  animation:fadeInUp .9s ease-out;
+}
+/* quitar cualquier overlay/halo previo */
+.card::before,
+.card::after{ content:none !important; }
+
+/* Título centrado */
+.card h2{
+  text-align:center;
+  font-family:var(--font-heading);
+  color:var(--primary-color);
+  font-size:clamp(2rem,6vw,2.4rem);
+  margin:0 0 .9rem;
+  letter-spacing:.3px;
 }
 
-/* ====== LISTA / LÍNEA CENTRAL ====== */
-.events {
-  position: relative;
-  width: 92%;
-  max-width: 720px;
-  margin: 0 auto;
-  list-style: none;
-  padding: .2rem 0 .6rem;
+/* ====== Línea de tiempo ====== */
+.events{
+  position:relative;
+  width:92%;
+  max-width:720px;
+  margin:0 auto;
+  list-style:none;
+  padding:.2rem 0 .6rem;
 }
 
-/* Línea vertical */
-.events::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 50%;
-  transform: translateX(-50%);
-  width: 2px;
-  height: 100%;
-  background: var(--accent-color);
-  opacity: .55;
+/* línea vertical */
+.events::before{
+  content:"";
+  position:absolute;
+  top:0; left:50%;
+  transform:translateX(-50%);
+  width:2px; height:100%;
+  background:var(--accent-color);
+  opacity:.55;
 }
 
-/* Cada ítem: alternado con dos columnas */
-.events li {
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: flex-start;
-  margin: 1.1rem 0;
+/* cada item alterna lados */
+.events li{
+  position:relative;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:flex-start;
+  margin:1.1rem 0;
 }
 
-/* Corazón sobre la línea */
-.events li::before {
-  content: "♥";
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  background: #fff;
-  color: var(--primary-color);
-  border-radius: 999px;
-  padding: 0.05rem 0.35rem;
-  font-size: .8rem;
-  box-shadow: var(--box-shadow);
+/* corazón en la línea */
+.events li::before{
+  content:"♥";
+  position:absolute;
+  top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  background:#fff;
+  color:var(--primary-color);
+  border-radius:999px;
+  padding:.05rem .35rem;
+  font-size:.8rem;
+  box-shadow:var(--box-shadow);
 }
 
-/* Contenido en columna: icono arriba, después textos */
-.content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: .45rem;
-  max-width: 260px; /* un pelín más ancho para el icono grande */
+/* contenido */
+.content{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:.45rem;
+  max-width:260px;
+}
+.events li:nth-child(odd) .content{
+  grid-column:1;
+  justify-self:end;
+  text-align:right;
+  padding-right:1.6rem;
+}
+.events li:nth-child(even) .content{
+  grid-column:2;
+  justify-self:start;
+  text-align:left;
+  padding-left:1.6rem;
 }
 
-/* Alternado + separación de la línea (más aire para icono grande) */
-.events li:nth-child(odd) .content {
-  grid-column: 1;
-  justify-self: end;
-  text-align: right;
-  padding-right: 1.6rem;  /* antes 1.2rem */
-}
-.events li:nth-child(even) .content {
-  grid-column: 2;
-  justify-self: start;
-  text-align: left;
-  padding-left: 1.6rem;   /* antes 1.2rem */
+/* icono redondo */
+.icon{
+  width:50px; height:50px; padding:10px;
+  background:#fff; color:var(--accent-color);
+  border-radius:999px; box-shadow:var(--box-shadow);
+  display:grid; place-items:center; font-size:1.1rem;
 }
 
-/* Icono en badge — MÁS GRANDE */
-.icon {
-  width: 50px;            /* antes 34px */
-  height: 50px;           /* antes 34px */
-  padding: 10px;          /* antes 6px */
-  color: var(--accent-color);
-  background: #fff;
-  border-radius: 999px;
-  box-shadow: var(--box-shadow);
-  flex: 0 0 auto;
+/* textos */
+.text{ display:flex; flex-direction:column; align-items:center; gap:.22rem; }
+.text .time{ font-weight:700; color:var(--primary-color); font-size:1.06rem; }
+.text .label{ color:var(--text-color); line-height:1.4; font-size:.98rem; }
+
+/* ====== Responsive ====== */
+@media (max-width:600px){
+  .card{ border-radius:14px; }
+  .events{ width:100%; max-width:440px; margin-top:.25rem; }
+  .events li{ margin:.95rem 0; }
+  .events li:nth-child(odd) .content{ padding-right:1.1rem; }
+  .events li:nth-child(even) .content{ padding-left:1.1rem; }
+  .icon{ width:44px; height:44px; padding:8px; }
+  .text .time{ font-size:1.02rem; }
+  .text .label{ font-size:.95rem; line-height:1.35; }
+}
+@media (max-width:360px){
+  .events li{ margin:.85rem 0; }
+  .icon{ width:40px; height:40px; padding:7px; }
 }
 
-/* Textos bajo el icono */
-.text {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: .22rem;
-}
-.text .time {
-  font-weight: 700;
-  color: var(--primary-color);
-  font-size: 1.06rem;      /* un toque mayor para balancear el icono */
-}
-.text .label {
-  color: var(--text-color);
-  line-height: 1.4;
-  font-size: .98rem;
-}
+/* ===== Animaciones reveal ===== */
+.reveal{ opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease; }
+.reveal .icon{ transform:scale(.96); transition:transform .6s ease; }
+.in-view{ opacity:1; transform:translateY(0); }
+.in-view .icon{ transform:scale(1); }
 
-/* ====== RESPONSIVE PHONE ====== */
-@media (max-width: 600px) {
-  /* Subir el bloque para que quepa el último horario */
-  .timeline-section {
-    justify-content: flex-start;
-    padding-top: clamp(24px, 6vh, 56px);
-    padding-bottom: 16px;
-  }
+/* Stagger opcional para 2..5 */
+.events li:nth-child(2).reveal { transition-delay:.05s; }
+.events li:nth-child(3).reveal { transition-delay:.10s; }
+.events li:nth-child(4).reveal { transition-delay:.15s; }
+.events li:nth-child(5).reveal { transition-delay:.20s; }
 
-  .timeline-section h2 {
-    font-size: 1.95rem;
-    margin-bottom: .75rem;
-  }
-
-  .events { width: 100%; max-width: 440px; margin-top: .25rem; }
-  .events::before { left: 50%; transform: translateX(-50%); }
-  .events li { margin: 0.95rem 0; }
-
-  .content { max-width: 85%; }
-
-  /* menos separación lateral que en desktop pero sigue habiendo aire */
-  .events li:nth-child(odd) .content { padding-right: 1.1rem; }
-  .events li:nth-child(even) .content { padding-left: 1.1rem; }
-
-  /* Icono grande en móvil también (un poco menor que desktop) */
-  .icon {
-    width: 44px;          /* antes 32px */
-    height: 44px;         /* antes 32px */
-    padding: 8px;         /* antes 5px */
-  }
-
-  .text .time { font-size: 1.02rem; }
-  .text .label { font-size: .95rem; line-height: 1.35; }
+/* Corazón con “latido” */
+@keyframes heartbeat{
+  0%,28%,70%,100%{ transform:translate(-50%,-50%) scale(1); }
+  14%{ transform:translate(-50%,-50%) scale(1.22); }
+  42%{ transform:translate(-50%,-50%) scale(1.12); }
 }
+.events li:hover::before{ animation:heartbeat 1s ease-in-out; }
 
-/* XS muy pequeño: microajustes */
-@media (max-width: 360px) {
-  .events li { margin: 0.85rem 0; }
-  .icon { width: 40px; height: 40px; padding: 7px; }
-}
-/* ===== Revelado al hacer scroll ===== */
-.reveal {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity .6s ease, transform .6s ease;
-  /* pequeño escalado del icono al entrar */
-}
-.reveal .icon {
-  transform: scale(.96);
-  transition: transform .6s ease;
-}
-.in-view {
-  opacity: 1;
-  transform: translateY(0);
-}
-.in-view .icon {
-  transform: scale(1);
-}
-
-/* Pequeño "stagger" por posición */
-.events li:nth-child(2).reveal { transition-delay: .05s; }
-.events li:nth-child(3).reveal { transition-delay: .1s; }
-.events li:nth-child(4).reveal { transition-delay: .15s; }
-.events li:nth-child(5).reveal { transition-delay: .2s; }
-
-/* ===== Corazón con latido al pasar el dedo ===== */
-@keyframes heartbeat {
-  0%, 28%, 70%, 100% { transform: translate(-50%, -50%) scale(1); }
-  14% { transform: translate(-50%, -50%) scale(1.22); }
-  42% { transform: translate(-50%, -50%) scale(1.12); }
-}
-.events li:hover::before {
-  animation: heartbeat 1s ease-in-out;
-}
-
-/* Sutil lift al icono en hover/touch */
-.events li:hover .icon {
-  filter: drop-shadow(0 4px 8px rgba(0,0,0,.12));
-  transform: scale(1.04);
-}
-
-/* Respeta reduced-motion */
-@media (prefers-reduced-motion: reduce) {
+/* Accesibilidad */
+@media (prefers-reduced-motion: reduce){
   .reveal, .reveal .icon,
   .in-view, .in-view .icon,
   .events li:hover .icon,
-  .events li:hover::before {
-    transition: none !important;
-    animation: none !important;
-    transform: none !important;
+  .events li:hover::before{
+    transition:none !important;
+    animation:none !important;
+    transform:none !important;
   }
+}
+
+/* Entrada tarjeta */
+@keyframes fadeInUp{
+  from{ opacity:0; transform:translateY(24px); }
+  to{ opacity:1; transform:translateY(0); }
 }

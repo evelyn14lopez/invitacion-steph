@@ -13,7 +13,7 @@ export class CountdownTimer {
     seconds: '0',
   };
 
-  private targetDate = new Date('2025-12-14T16:00:00').getTime();
+  private targetDate = new Date('2025-09-06T16:00:00').getTime();
   private intervalId: any;
 
   componentWillLoad() {

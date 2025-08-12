@@ -5,11 +5,11 @@
 }
 
 .map {
-  min-height: 100vh; /* Ocupar toda la altura de la pantalla */
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Centrar verticalmente */
-  align-items: center;     /* Centrar horizontalmente */
+  justify-content: center;
+  align-items: center;
   text-align: center;
   padding: 2rem;
   background: transparent;
@@ -31,15 +31,68 @@
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
-/* Responsive para pantallas pequeñas */
+/* --- Botón "Abrir en Google Maps" --- */
+.map .btn{
+  margin-top: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  padding: .9rem 1.25rem;
+  border-radius: 999px;
+  background: var(--primary-color);
+  color: #fff;
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: .2px;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(0,0,0,.08);
+  transition: background-color .25s ease, transform .15s ease, box-shadow .15s ease;
+}
+
+/* Icono de pin usando máscara SVG, hereda el color del texto */
+.map .btn::before{
+  content: "";
+  width: 1.1rem;
+  height: 1.1rem;
+  background: currentColor;
+  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23000" d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>') no-repeat center / contain;
+          mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23000" d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>') no-repeat center / contain;
+}
+
+.map .btn:hover{
+  background: var(--accent-color);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(0,0,0,.10);
+}
+
+.map .btn:active{
+  transform: scale(.98);
+}
+
+.map .btn:focus-visible{
+  outline: none;
+  box-shadow:
+    0 0 0 3px rgba(255,255,255,.7),
+    0 0 0 6px rgba(123,45,38,.35); /* anillo con tu primario */
+}
+
+/* Responsive */
 @media (max-width: 600px) {
   .map h2 {
     font-size: 1.8rem;
     margin-bottom: 0.8rem;
   }
-
   .map iframe {
     width: 95%;
     height: 50vh;
   }
+  .map .btn{
+    padding: .85rem 1.1rem;
+    gap: .5rem;
+  }
+}
+
+/* Accesibilidad: respeta reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .map .btn{ transition: none; }
 }

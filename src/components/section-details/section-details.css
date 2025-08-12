@@ -1,37 +1,65 @@
-:host {
-  display: block;
-  min-height: 100vh;
-  scroll-snap-align: start;
+:host{
+  display:block;
+  height:100dvh;                 /* estable en móvil */
+  scroll-snap-align:start;
+  scroll-snap-stop:always;
+  box-sizing:border-box;
 }
 
-/* Clase única para no colisionar con .section global */
-.details-section {
-  min-height: 100vh;                /* centra como las otras secciones */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem 1rem;
-  text-align: center;
-  background: transparent;          /* deja ver el fondo floral de app-root */
-  font-family: var(--font-body);
+.details{
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:2rem 1rem;
+  background:transparent !important;  /* muestra tu fondo floral */
 }
 
-.details-section h2 {
-  font-family: var(--font-heading);
-  color: var(--primary-color);
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+/* Tarjeta */
+.card{
+  z-index:1;
+  width:min(680px,92%);
+  background-color:rgba(255,255,255,.7);
+  padding:clamp(1.25rem,4vw,2rem);
+  border-radius:16px;
+  box-shadow:var(--box-shadow);
+  animation:fadeInUp .9s ease-out;
 }
 
-.details-section p {
-  font-size: 1.2rem;
-  color: var(--text-color);
-  line-height: 1.6;
-  margin: 0.25rem 0;
+.card h2{
+  font-family:var(--font-heading);
+  color:var(--primary-color);
+  font-size:clamp(2rem,6vw,2.5rem);
+  margin:0 0 .9rem;
 }
 
-/* un poco más de aire entre fila y fila en móvil */
-@media (max-width: 600px) {
-  .details-section p { margin: 0.35rem 0; }
+/* Lista de datos */
+.list{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  gap:.6rem;
+}
+
+.list li{
+  font-family:var(--font-body);
+  font-size:clamp(1rem,3.4vw,1.2rem);
+  color:var(--text-color);
+  line-height:1.6;
+}
+
+.list li strong{
+  color:var(--text-color);
+  font-weight:700;
+}
+
+@keyframes fadeInUp{
+  from{opacity:0; transform:translateY(24px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+@media (max-width:600px){
+  .card{ border-radius:14px; }
 }

@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Georgia&display=swap');
 
 :root {
-  --primary-color: #4FA3B0;        /* Turquesa suave */
-  --secondary-color: #F0F9FA;      /* Fondo claro casi blanco azulado */
-  --accent-color: #709FA3;         /* Verde azulado medio */
-  --text-color: #2e3d42;           /* Azul grisáceo oscuro */
+  --primary-color: #7B2D26;        /* Rojo vino elegante */
+  --secondary-color: #F6E7E0;      /* Arena/beige suave */
+  --accent-color: #A36D63;         /* Café rosado */
+  --text-color: #4B2E2E;           /* Marrón oscuro */
   --font-heading: 'Great Vibes', cursive;
   --font-body: 'Georgia', serif;
-  --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
 }
 
 /* Reset básico */

@@ -1,46 +1,69 @@
-:host {
-  display: block;
-  min-height: 100vh;
-  scroll-snap-align: start;
+:host{
+  display:block;
+  height:100dvh;              /* estable en móvil */
+  scroll-snap-align:start;
+  scroll-snap-stop:always;
+  box-sizing:border-box;
 }
 
-.container {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-  text-align: center;
+.guest{
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:2rem 1rem;
+  background:transparent !important;
 }
 
-.container h2 {
-  font-family: var(--font-heading);
-  font-size: 2.5rem;
-  color: var(--primary-color);
-  margin-bottom: 1rem;
+/* Tarjeta (mismo look que floral-intro) */
+.card{
+  z-index:1;
+  width:min(680px,92%);
+  background-color:rgba(255,255,255,.7);
+  padding:clamp(1.25rem,4vw,2rem);
+  border-radius:16px;
+  box-shadow:var(--box-shadow);
+  animation:fadeInUp .9s ease-out;
 }
 
-.container p {
-  font-size: 1.2rem;
-  color: var(--text-color);
-  margin-bottom: 1.5rem;
+.card h2{
+  font-family:var(--font-heading);
+  color:var(--primary-color);
+  font-size:clamp(2rem,6vw,2.5rem);
+  margin:0 0 .75rem;
 }
 
-.container .btn {
-  background-color: var(--primary-color);
-  color: white;
-  font-family: var(--font-body);
-  padding: 0.8rem 1.5rem;
-  border-radius: 24px;
-  font-size: 1rem;
-  cursor: pointer;
-  text-decoration: none;
-  box-shadow: var(--box-shadow);
-  transition: background-color 0.3s ease, transform 0.2s ease;
+.card p{
+  font-family:var(--font-body);
+  font-size:clamp(1rem,3.4vw,1.2rem);
+  color:var(--text-color);
+  line-height:1.6;
+  margin:0 0 1.25rem;
 }
 
-.container .btn:hover {
-  background-color: var(--accent-color);
-  transform: scale(1.05);
+.btn{
+  display:inline-block;
+  background-color:var(--primary-color);
+  color:#fff;
+  font-family:var(--font-body);
+  padding:.85rem 1.6rem;
+  border-radius:28px;
+  font-size:1rem;
+  text-decoration:none;
+  box-shadow:var(--box-shadow);
+  transition:background-color .25s ease, transform .15s ease;
+}
+.btn:hover{
+  background-color:var(--accent-color);
+  transform:translateY(-1px);
+}
+
+@keyframes fadeInUp{
+  from{opacity:0; transform:translateY(24px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+@media (max-width:600px){
+  .card{ border-radius:14px; }
 }
