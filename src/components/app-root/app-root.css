@@ -17,6 +17,25 @@
   box-sizing: border-box;
 }
 
+/* Scroll suave + prevenir scroll lateral */
+html, body {
+  height: 100%;
+  overflow-x: hidden;            /* 👈 evita que se mueva a los lados */
+  scroll-behavior: smooth;       /* 👈 scroll suave nativo */
+}
+
+/* Opcional: mantener la barra vertical siempre para evitar saltos */
+html {
+  overflow-y: scroll;
+}
+
+/* Accesibilidad: respeta a quien prefiere menos animación */
+@media (prefers-reduced-motion: reduce) {
+  html, body {
+    scroll-behavior: auto !important;
+  }
+}
+
 body {
   font-family: var(--font-body);
   background-color: var(--secondary-color);
@@ -24,17 +43,27 @@ body {
   line-height: 1.6;
 }
 
-
+/* CONTENEDOR PRINCIPAL CON SCROLL */
 .scroll-container {
-  height: 100vh;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
+  height: 100svh;                  /* más estable que vh/dvh en móvil */
+  overflow-y: auto;
+  scroll-snap-type: y proximity;   /* encaje suave entre secciones */
   scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch; /* inercia en iOS */
+  overflow-x: hidden;              /* 👈 evita scroll lateral dentro del contenedor */
+
   background-image: url('/assets/img/flores.png');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   background-color: #fdfdfc; /* Opcional */
+}
+
+/* En móviles, evita tirones del background fijo */
+@media (max-width: 768px) {
+  .scroll-container {
+    background-attachment: scroll;
+  }
 }
 
 h1, h2, h3 {
@@ -43,7 +72,6 @@ h1, h2, h3 {
   text-align: center;
   margin-bottom: 0.8rem;
 }
-
 
 p, span {
   font-family: var(--font-body);
@@ -69,14 +97,17 @@ p, span {
   background-color: var(--accent-color);
 }
 
+/* CADA SECCIÓN */
 .section {
   scroll-snap-align: start;
+  scroll-snap-stop: always;
   padding: 4rem 1rem;
-  min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow-x: hidden;  /* 👈 evita desplazamiento lateral dentro de cada sección */
 }
 
 .countdown {
