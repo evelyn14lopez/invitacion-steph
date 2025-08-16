@@ -181,6 +181,10 @@ export interface GuestMessagesCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGuestMessagesElement;
 }
+export interface SectionRsvpCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSectionRsvpElement;
+}
 declare global {
     interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {
     }
@@ -259,7 +263,20 @@ declare global {
         prototype: HTMLSectionLocationElement;
         new (): HTMLSectionLocationElement;
     };
+    interface HTMLSectionRsvpElementEventMap {
+        "confirmAttendance": void;
+        "cancelAttendance": void;
+        "pendingAttendance": void;
+    }
     interface HTMLSectionRsvpElement extends Components.SectionRsvp, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSectionRsvpElementEventMap>(type: K, listener: (this: HTMLSectionRsvpElement, ev: SectionRsvpCustomEvent<HTMLSectionRsvpElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSectionRsvpElementEventMap>(type: K, listener: (this: HTMLSectionRsvpElement, ev: SectionRsvpCustomEvent<HTMLSectionRsvpElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLSectionRsvpElement: {
         prototype: HTMLSectionRsvpElement;
@@ -461,6 +478,12 @@ declare namespace LocalJSX {
         "hallTitle"?: string;
     }
     interface SectionRsvp {
+        "onCancelAttendance"?: (event: SectionRsvpCustomEvent<void>) => void;
+        /**
+          * Eventos que puedes escuchar desde app-root
+         */
+        "onConfirmAttendance"?: (event: SectionRsvpCustomEvent<void>) => void;
+        "onPendingAttendance"?: (event: SectionRsvpCustomEvent<void>) => void;
     }
     interface SectionTimeline {
     }
