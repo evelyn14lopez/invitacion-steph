@@ -10,12 +10,11 @@ export class EnvelopeIntro {
   @Element() el!: HTMLElement;
 
   private finishOpen = () => {
-    // Espera al fade-out del CSS y emite el evento
     setTimeout(() => {
       this.el.dispatchEvent(
         new CustomEvent('envelopeOpened', { bubbles: true, composed: true })
       );
-    }, 500); // mismo tiempo que la transición del CSS
+    }, 500);
   };
 
   private handleOpen = () => {

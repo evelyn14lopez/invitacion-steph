@@ -15,16 +15,155 @@ export namespace Components {
     interface EnvelopeIntro {
     }
     interface FloralIntro {
+        /**
+          * @default 'Stephanie'
+         */
+        "bride": string;
+        /**
+          * @default 'Nuestra Boda'
+         */
+        "eventLabel": string;
+        "familySurname"?: string;
+        /**
+          * @default 'Brandon'
+         */
+        "groom": string;
+        /**
+          * @default 'Luis Jair'
+         */
+        "guestName"?: string;
+        /**
+          * @default 'Desliza hacia abajo para descubrir la invitación'
+         */
+        "hintText": string;
     }
     interface GuestMessages {
+        /**
+          * @default ''
+         */
+        "photoAlt": string;
+        /**
+          * @default 'assets/img/slide_novios13.jpg'
+         */
+        "photoSrc": string;
     }
     interface PhotoCarousel {
     }
     interface SectionCouple {
+        /**
+          * @default 'Stephanie Santana Zambrano'
+         */
+        "bride": string;
+        /**
+          * @default ['Norma Angeliza Zambrano Mendoza', 'José Santana Arenas']
+         */
+        "brideParents": string[];
+        /**
+          * @default 'Brandon Jesús Garcia Garcia'
+         */
+        "groom": string;
+        /**
+          * @default ['Viviana Garcia Rito', 'Mauricio Garcia Aguilar']
+         */
+        "groomParents": string[];
+        /**
+          * @default 'Mejores son dos que uno, pues juntos superan cualquier desafío, se levantan cuando caen y se fortalecen con su amor.'
+         */
+        "verse": string;
+        /**
+          * @default 'Eclesiastés 4:9-10'
+         */
+        "verseRef": string;
     }
     interface SectionDetails {
+        /**
+          * @default 'Detalle'
+         */
+        "photoAlt": string;
+        /**
+          * Foto inferior
+          * @default 'assets/img/slide_novios1.jpg'
+         */
+        "photoSrc": string;
+    }
+    interface SectionGifts {
+        /**
+          * @default 'Mesa de regalos'
+         */
+        "mesaLabel": string;
+        /**
+          * @default 'https://www.amazon.com.mx/wedding/share/NuestraBodaStephanieBrandon'
+         */
+        "mesaUrl": string;
+        /**
+          * @default 'El mejor regalo es que estés presente en este día tan esperado, pero si deseas hacernos un obsequio tenemos esta opción:'
+         */
+        "message": string;
+        "note"?: string;
+        /**
+          * @default 'Regalos'
+         */
+        "title": string;
     }
     interface SectionLocation {
+        /**
+          * @default 'And. Vista Hermosa Manzana 019,'
+         */
+        "churchAddress1": string;
+        /**
+          * @default 'NFONAVIT San Francisco, 52176 San Salvador Tizatlalli, Méx.'
+         */
+        "churchAddress2": string;
+        /**
+          * @default 19.265728081855073
+         */
+        "churchLat": number;
+        /**
+          * @default -99.5949773087833
+         */
+        "churchLng": number;
+        /**
+          * @default 'Parroquia de San Francisco De Asís'
+         */
+        "churchPlace": string;
+        /**
+          * @default '5:00 p.m.'
+         */
+        "churchTime": string;
+        /**
+          * Iglesia
+          * @default 'Ceremonia Religiosa'
+         */
+        "churchTitle": string;
+        /**
+          * @default 'Av. Durazno 85'
+         */
+        "hallAddress1": string;
+        /**
+          * @default ' Izcalli V, 52172 San Salvador Tizatlalli, Méx.'
+         */
+        "hallAddress2": string;
+        /**
+          * @default 19.269931527268504
+         */
+        "hallLat": number;
+        /**
+          * @default -99.59031501349244
+         */
+        "hallLng": number;
+        /**
+          * @default 'Salón Rossano'
+         */
+        "hallPlace": string;
+        /**
+          * @default '7:00 p.m.'
+         */
+        "hallTime": string;
+        /**
+          * Recepción / Salón
+          * @default 'Recepción'
+         */
+        "hallTitle": string;
     }
     interface SectionRsvp {
     }
@@ -32,6 +171,10 @@ export namespace Components {
     }
     interface SectionWelcome {
     }
+}
+export interface GuestMessagesCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGuestMessagesElement;
 }
 declare global {
     interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {
@@ -64,7 +207,18 @@ declare global {
         prototype: HTMLFloralIntroElement;
         new (): HTMLFloralIntroElement;
     };
+    interface HTMLGuestMessagesElementEventMap {
+        "guest-message-submit": { message: string };
+    }
     interface HTMLGuestMessagesElement extends Components.GuestMessages, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGuestMessagesElementEventMap>(type: K, listener: (this: HTMLGuestMessagesElement, ev: GuestMessagesCustomEvent<HTMLGuestMessagesElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGuestMessagesElementEventMap>(type: K, listener: (this: HTMLGuestMessagesElement, ev: GuestMessagesCustomEvent<HTMLGuestMessagesElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGuestMessagesElement: {
         prototype: HTMLGuestMessagesElement;
@@ -87,6 +241,12 @@ declare global {
     var HTMLSectionDetailsElement: {
         prototype: HTMLSectionDetailsElement;
         new (): HTMLSectionDetailsElement;
+    };
+    interface HTMLSectionGiftsElement extends Components.SectionGifts, HTMLStencilElement {
+    }
+    var HTMLSectionGiftsElement: {
+        prototype: HTMLSectionGiftsElement;
+        new (): HTMLSectionGiftsElement;
     };
     interface HTMLSectionLocationElement extends Components.SectionLocation, HTMLStencilElement {
     }
@@ -122,6 +282,7 @@ declare global {
         "photo-carousel": HTMLPhotoCarouselElement;
         "section-couple": HTMLSectionCoupleElement;
         "section-details": HTMLSectionDetailsElement;
+        "section-gifts": HTMLSectionGiftsElement;
         "section-location": HTMLSectionLocationElement;
         "section-rsvp": HTMLSectionRsvpElement;
         "section-timeline": HTMLSectionTimelineElement;
@@ -138,16 +299,156 @@ declare namespace LocalJSX {
     interface EnvelopeIntro {
     }
     interface FloralIntro {
+        /**
+          * @default 'Stephanie'
+         */
+        "bride"?: string;
+        /**
+          * @default 'Nuestra Boda'
+         */
+        "eventLabel"?: string;
+        "familySurname"?: string;
+        /**
+          * @default 'Brandon'
+         */
+        "groom"?: string;
+        /**
+          * @default 'Luis Jair'
+         */
+        "guestName"?: string;
+        /**
+          * @default 'Desliza hacia abajo para descubrir la invitación'
+         */
+        "hintText"?: string;
     }
     interface GuestMessages {
+        "onGuest-message-submit"?: (event: GuestMessagesCustomEvent<{ message: string }>) => void;
+        /**
+          * @default ''
+         */
+        "photoAlt"?: string;
+        /**
+          * @default 'assets/img/slide_novios13.jpg'
+         */
+        "photoSrc"?: string;
     }
     interface PhotoCarousel {
     }
     interface SectionCouple {
+        /**
+          * @default 'Stephanie Santana Zambrano'
+         */
+        "bride"?: string;
+        /**
+          * @default ['Norma Angeliza Zambrano Mendoza', 'José Santana Arenas']
+         */
+        "brideParents"?: string[];
+        /**
+          * @default 'Brandon Jesús Garcia Garcia'
+         */
+        "groom"?: string;
+        /**
+          * @default ['Viviana Garcia Rito', 'Mauricio Garcia Aguilar']
+         */
+        "groomParents"?: string[];
+        /**
+          * @default 'Mejores son dos que uno, pues juntos superan cualquier desafío, se levantan cuando caen y se fortalecen con su amor.'
+         */
+        "verse"?: string;
+        /**
+          * @default 'Eclesiastés 4:9-10'
+         */
+        "verseRef"?: string;
     }
     interface SectionDetails {
+        /**
+          * @default 'Detalle'
+         */
+        "photoAlt"?: string;
+        /**
+          * Foto inferior
+          * @default 'assets/img/slide_novios1.jpg'
+         */
+        "photoSrc"?: string;
+    }
+    interface SectionGifts {
+        /**
+          * @default 'Mesa de regalos'
+         */
+        "mesaLabel"?: string;
+        /**
+          * @default 'https://www.amazon.com.mx/wedding/share/NuestraBodaStephanieBrandon'
+         */
+        "mesaUrl"?: string;
+        /**
+          * @default 'El mejor regalo es que estés presente en este día tan esperado, pero si deseas hacernos un obsequio tenemos esta opción:'
+         */
+        "message"?: string;
+        "note"?: string;
+        /**
+          * @default 'Regalos'
+         */
+        "title"?: string;
     }
     interface SectionLocation {
+        /**
+          * @default 'And. Vista Hermosa Manzana 019,'
+         */
+        "churchAddress1"?: string;
+        /**
+          * @default 'NFONAVIT San Francisco, 52176 San Salvador Tizatlalli, Méx.'
+         */
+        "churchAddress2"?: string;
+        /**
+          * @default 19.265728081855073
+         */
+        "churchLat"?: number;
+        /**
+          * @default -99.5949773087833
+         */
+        "churchLng"?: number;
+        /**
+          * @default 'Parroquia de San Francisco De Asís'
+         */
+        "churchPlace"?: string;
+        /**
+          * @default '5:00 p.m.'
+         */
+        "churchTime"?: string;
+        /**
+          * Iglesia
+          * @default 'Ceremonia Religiosa'
+         */
+        "churchTitle"?: string;
+        /**
+          * @default 'Av. Durazno 85'
+         */
+        "hallAddress1"?: string;
+        /**
+          * @default ' Izcalli V, 52172 San Salvador Tizatlalli, Méx.'
+         */
+        "hallAddress2"?: string;
+        /**
+          * @default 19.269931527268504
+         */
+        "hallLat"?: number;
+        /**
+          * @default -99.59031501349244
+         */
+        "hallLng"?: number;
+        /**
+          * @default 'Salón Rossano'
+         */
+        "hallPlace"?: string;
+        /**
+          * @default '7:00 p.m.'
+         */
+        "hallTime"?: string;
+        /**
+          * Recepción / Salón
+          * @default 'Recepción'
+         */
+        "hallTitle"?: string;
     }
     interface SectionRsvp {
     }
@@ -165,6 +466,7 @@ declare namespace LocalJSX {
         "photo-carousel": PhotoCarousel;
         "section-couple": SectionCouple;
         "section-details": SectionDetails;
+        "section-gifts": SectionGifts;
         "section-location": SectionLocation;
         "section-rsvp": SectionRsvp;
         "section-timeline": SectionTimeline;
@@ -184,6 +486,7 @@ declare module "@stencil/core" {
             "photo-carousel": LocalJSX.PhotoCarousel & JSXBase.HTMLAttributes<HTMLPhotoCarouselElement>;
             "section-couple": LocalJSX.SectionCouple & JSXBase.HTMLAttributes<HTMLSectionCoupleElement>;
             "section-details": LocalJSX.SectionDetails & JSXBase.HTMLAttributes<HTMLSectionDetailsElement>;
+            "section-gifts": LocalJSX.SectionGifts & JSXBase.HTMLAttributes<HTMLSectionGiftsElement>;
             "section-location": LocalJSX.SectionLocation & JSXBase.HTMLAttributes<HTMLSectionLocationElement>;
             "section-rsvp": LocalJSX.SectionRsvp & JSXBase.HTMLAttributes<HTMLSectionRsvpElement>;
             "section-timeline": LocalJSX.SectionTimeline & JSXBase.HTMLAttributes<HTMLSectionTimelineElement>;

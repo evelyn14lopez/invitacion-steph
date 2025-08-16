@@ -6,7 +6,6 @@
   box-sizing:border-box;
 }
 
-/* Contenedor centrado */
 .timeline-section{
   height:100%;
   display:flex;
@@ -17,20 +16,19 @@
   background:transparent !important;
 }
 
-/* -------- Tarjeta MUY translúcida, sin halo blanco -------- */
 .card{
   position:relative;
   z-index:1;
   width:min(900px,95%);
-  background:rgba(255,255,255,.12);      /* más transparente */
-  backdrop-filter:blur(3px);             /* legibilidad sin blanquear */
+  background:rgba(255,255,255,.12);
+  backdrop-filter:blur(3px);
   padding:clamp(1.25rem,4vw,2rem);
   border-radius:16px;
-  border:1px solid rgba(255,255,255,.18);/* filo sutil (opcional) */
-  box-shadow:0 8px 20px rgba(0,0,0,.06); /* sombra normal, sin halo */
+  border:1px solid rgba(255,255,255,.18);
+  box-shadow:0 8px 20px rgba(0,0,0,.06);
   animation:fadeInUp .9s ease-out;
 }
-/* quitar cualquier overlay/halo previo */
+
 .card::before,
 .card::after{ content:none !important; }
 
@@ -44,7 +42,6 @@
   letter-spacing:.3px;
 }
 
-/* ====== Línea de tiempo ====== */
 .events{
   position:relative;
   width:92%;
@@ -54,7 +51,6 @@
   padding:.2rem 0 .6rem;
 }
 
-/* línea vertical */
 .events::before{
   content:"";
   position:absolute;
@@ -65,7 +61,6 @@
   opacity:.55;
 }
 
-/* cada item alterna lados */
 .events li{
   position:relative;
   display:grid;
@@ -74,7 +69,6 @@
   margin:1.1rem 0;
 }
 
-/* corazón en la línea */
 .events li::before{
   content:"♥";
   position:absolute;
@@ -88,7 +82,6 @@
   box-shadow:var(--box-shadow);
 }
 
-/* contenido */
 .content{
   display:flex;
   flex-direction:column;
@@ -109,7 +102,6 @@
   padding-left:1.6rem;
 }
 
-/* icono redondo */
 .icon{
   width:50px; height:50px; padding:10px;
   background:#fff; color:var(--accent-color);
@@ -117,12 +109,10 @@
   display:grid; place-items:center; font-size:1.1rem;
 }
 
-/* textos */
 .text{ display:flex; flex-direction:column; align-items:center; gap:.22rem; }
 .text .time{ font-weight:700; color:var(--primary-color); font-size:1.06rem; }
 .text .label{ color:var(--text-color); line-height:1.4; font-size:.98rem; }
 
-/* ====== Responsive ====== */
 @media (max-width:600px){
   .card{ border-radius:14px; }
   .events{ width:100%; max-width:440px; margin-top:.25rem; }
@@ -138,19 +128,17 @@
   .icon{ width:40px; height:40px; padding:7px; }
 }
 
-/* ===== Animaciones reveal ===== */
 .reveal{ opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease; }
 .reveal .icon{ transform:scale(.96); transition:transform .6s ease; }
 .in-view{ opacity:1; transform:translateY(0); }
 .in-view .icon{ transform:scale(1); }
 
-/* Stagger opcional para 2..5 */
+
 .events li:nth-child(2).reveal { transition-delay:.05s; }
 .events li:nth-child(3).reveal { transition-delay:.10s; }
 .events li:nth-child(4).reveal { transition-delay:.15s; }
 .events li:nth-child(5).reveal { transition-delay:.20s; }
 
-/* Corazón con “latido” */
 @keyframes heartbeat{
   0%,28%,70%,100%{ transform:translate(-50%,-50%) scale(1); }
   14%{ transform:translate(-50%,-50%) scale(1.22); }
@@ -158,7 +146,6 @@
 }
 .events li:hover::before{ animation:heartbeat 1s ease-in-out; }
 
-/* Accesibilidad */
 @media (prefers-reduced-motion: reduce){
   .reveal, .reveal .icon,
   .in-view, .in-view .icon,
@@ -170,7 +157,6 @@
   }
 }
 
-/* Entrada tarjeta */
 @keyframes fadeInUp{
   from{ opacity:0; transform:translateY(24px); }
   to{ opacity:1; transform:translateY(0); }

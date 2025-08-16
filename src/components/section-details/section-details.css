@@ -1,65 +1,83 @@
-:host{
-  display:block;
-  height:100dvh;                 /* estable en móvil */
-  scroll-snap-align:start;
-  scroll-snap-stop:always;
-  box-sizing:border-box;
+:host {
+  display: block;
+  height: auto;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  box-sizing: border-box;
+  margin-bottom: clamp(40px, 8vw, 80px);
 }
 
-.details{
-  height:100%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:2rem 1rem;
-  background:transparent !important;  /* muestra tu fondo floral */
+.details {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 1rem clamp(24px, 6vw, 48px);
+  background: transparent !important;
 }
 
-/* Tarjeta */
-.card{
-  z-index:1;
-  width:min(680px,92%);
-  background-color:rgba(255,255,255,.7);
-  padding:clamp(1.25rem,4vw,2rem);
-  border-radius:16px;
-  box-shadow:var(--box-shadow);
-  animation:fadeInUp .9s ease-out;
+.card {
+  z-index: 1;
+  width: min(680px, 92%);
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: clamp(1.25rem, 4vw, 2rem);
+  border-radius: 16px;
+  box-shadow: var(--box-shadow);
+  animation: fadeInUp .9s ease-out;
+  margin-bottom: 1.5rem;
 }
 
-.card h2{
-  font-family:var(--font-heading);
-  color:var(--primary-color);
-  font-size:clamp(2rem,6vw,2.5rem);
-  margin:0 0 .9rem;
+.card h2 {
+  font-family: var(--font-heading);
+  color: var(--primary-color);
+  font-size: clamp(2rem, 6vw, 2.5rem);
+  margin: 0 0 .9rem;
 }
 
-/* Lista de datos */
-.list{
-  list-style:none;
-  margin:0;
-  padding:0;
-  display:grid;
-  gap:.6rem;
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: .6rem;
 }
 
-.list li{
-  font-family:var(--font-body);
-  font-size:clamp(1rem,3.4vw,1.2rem);
-  color:var(--text-color);
-  line-height:1.6;
+.list li {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 3.4vw, 1.2rem);
+  color: var(--text-color);
+  line-height: 1.6;
 }
 
-.list li strong{
-  color:var(--text-color);
-  font-weight:700;
+.list li strong { font-weight: 700; }
+
+.photo {
+  margin: 0 auto;
+  width: min(720px, 92%);
+  aspect-ratio: 4 / 5;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 14px 34px rgba(0,0,0,.18);
+  background: #f4f4f4;
+  position: relative;
+  left: -5px;
 }
 
-@keyframes fadeInUp{
-  from{opacity:0; transform:translateY(24px);}
-  to{opacity:1; transform:translateY(0);}
+.photo img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: var(--pos-x, 50%) var(--pos-y, 50%);
 }
 
-@media (max-width:600px){
-  .card{ border-radius:14px; }
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px){
+  .card  { border-radius: 14px; }
+  .photo { border-radius: 14px; left: -8px; }
 }

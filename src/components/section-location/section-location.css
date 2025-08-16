@@ -1,98 +1,107 @@
-:host {
-  display: block;
-  min-height: 100vh;
-  scroll-snap-align: start;
+:host{
+  display:block;
+  min-height:100dvh;
+  scroll-snap-align:start;
+  scroll-snap-stop:always;
+  box-sizing:border-box;
 }
 
-.map {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 2rem;
-  background: transparent;
+.locations{
+  min-height:min(100dvh, 1000px);
+  display:grid;
+  place-items:center;
+  padding:2rem 1rem 2.75rem;
+  background:transparent;
 }
 
-.map h2 {
-  font-family: var(--font-heading);
-  color: var(--primary-color);
-  font-size: 2.2rem;
-  margin-bottom: 1rem;
+.wrap{
+  width:min(980px, 96vw);
+  display:grid;
+  gap:1.2rem;
 }
 
-.map iframe {
-  width: 90%;
-  max-width: 800px;
-  height: 60vh;
-  border: none;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+.loc-card{
+  background:rgba(255,255,255,.26);
+  border:1px solid rgba(255,255,255,.32);
+  border-radius:16px;
+  padding:clamp(1rem, 3vw, 1.6rem);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+  box-shadow:0 10px 28px rgba(0,0,0,.10);
+  text-align:center;
+  animation:fadeInUp .6s ease-out both;
 }
 
-/* --- Botón "Abrir en Google Maps" --- */
-.map .btn{
-  margin-top: 1rem;
-  display: inline-flex;
-  align-items: center;
-  gap: .55rem;
-  padding: .9rem 1.25rem;
-  border-radius: 999px;
-  background: var(--primary-color);
-  color: #fff;
-  font-family: var(--font-body);
-  font-weight: 600;
-  letter-spacing: .2px;
-  text-decoration: none;
-  box-shadow: 0 8px 20px rgba(0,0,0,.08);
-  transition: background-color .25s ease, transform .15s ease, box-shadow .15s ease;
+.loc-icon{
+  width:56px; height:56px;
+  margin:0 auto .5rem;
+  display:grid; place-items:center;
+  border-radius:999px;
+  color:var(--primary-color);
+  background:rgba(255,255,255,.95);
+  box-shadow:0 8px 22px rgba(0,0,0,.08);
 }
 
-/* Icono de pin usando máscara SVG, hereda el color del texto */
-.map .btn::before{
-  content: "";
-  width: 1.1rem;
-  height: 1.1rem;
-  background: currentColor;
-  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23000" d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>') no-repeat center / contain;
-          mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23000" d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>') no-repeat center / contain;
+.loc-title{
+  margin:.4rem 0 .5rem;
+  font-family:var(--font-heading);
+  color:var(--primary-color);
+  font-size:clamp(1.6rem, 5.4vw, 2.2rem);
+  letter-spacing:.2px;
 }
 
-.map .btn:hover{
-  background: var(--accent-color);
-  transform: translateY(-1px);
-  box-shadow: 0 10px 22px rgba(0,0,0,.10);
+.loc-info{
+  margin:0 auto .85rem;
+}
+.time{
+  margin:.15rem 0 .35rem;
+  font-family:var(--font-body);
+  color:var(--text-color);
+  font-size:clamp(1rem, 3vw, 1.05rem);
+}
+.place{
+  margin:.1rem 0;
+  font-weight:600;
+  color:var(--text-color);
+}
+.addr{
+  margin:0;
+  color:var(--text-color);
+  opacity:.95;
 }
 
-.map .btn:active{
-  transform: scale(.98);
+.loc-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:.5rem;
+  margin:.2rem auto .8rem;
+  padding:.55rem 1.05rem;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:700;
+  letter-spacing:.2px;
+  background:rgba(255,255,255,.96);
+  color:var(--primary-color);
+  border:1px solid rgba(0,0,0,.06);
+  box-shadow:0 10px 22px rgba(0,0,0,.06);
+  transition:transform .12s ease, box-shadow .12s ease, background-color .2s ease;
+}
+.loc-btn::before{
+  content:"";
+  width:18px; height:18px; background:currentColor;
+  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>') no-repeat center/contain;
+          mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>') no-repeat center/contain;
+}
+.loc-btn:hover{ transform:translateY(-1px); box-shadow:0 12px 24px rgba(0,0,0,.08); }
+.loc-btn:active{ transform:scale(.98); }
+
+@media (max-width:640px){
+  .wrap{ gap:1rem; }
+  .loc-icon{ width:52px; height:52px; }
 }
 
-.map .btn:focus-visible{
-  outline: none;
-  box-shadow:
-    0 0 0 3px rgba(255,255,255,.7),
-    0 0 0 6px rgba(123,45,38,.35); /* anillo con tu primario */
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-  .map h2 {
-    font-size: 1.8rem;
-    margin-bottom: 0.8rem;
-  }
-  .map iframe {
-    width: 95%;
-    height: 50vh;
-  }
-  .map .btn{
-    padding: .85rem 1.1rem;
-    gap: .5rem;
-  }
-}
-
-/* Accesibilidad: respeta reduced motion */
-@media (prefers-reduced-motion: reduce){
-  .map .btn{ transition: none; }
+@keyframes fadeInUp{
+  from{ opacity:0; transform:translateY(18px); }
+  to  { opacity:1; transform:translateY(0); }
 }

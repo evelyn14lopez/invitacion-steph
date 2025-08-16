@@ -1,22 +1,90 @@
-.music-controller {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 9999;
+
+.sr-audio{
+  position:absolute !important;
+  width:0 !important;
+  height:0 !important;
+  overflow:hidden !important;
+  opacity:0 !important;
+  pointer-events:none !important;
 }
 
-.music-btn {
-  background-color: #e91e63;
-  color: white;
-  font-size: 1rem;
-  padding: 0.6rem 1.2rem;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transition: background-color 0.3s ease;
+.music-controller{
+  position:fixed;
+  bottom:84px;
+  right:16px;
+  z-index:9999;
 }
 
-.music-btn:hover {
-  background-color: #c2185b;
+.music-btn{
+  -webkit-appearance:none;
+  appearance:none;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:.55rem;
+  padding:.55rem 1rem;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.28);
+  background:rgba(128,0,32,.62);
+  color:#ffffff !important;
+  font:600 .95rem/1 var(--font-body, system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial);
+  cursor:pointer;
+
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+
+  box-shadow:0 8px 18px rgba(0,0,0,.18);
+  transition:background-color .25s ease, transform .15s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.music-btn *{
+  color:inherit !important;
+  line-height:1;
+}
+
+.music-btn:hover{
+  background:rgba(128,0,32,.78);
+  transform:translateY(-1px);
+  border-color:rgba(255,255,255,.36);
+  box-shadow:0 10px 22px rgba(0,0,0,.22);
+}
+.music-btn:active{ transform:translateY(0); }
+.music-btn:focus{ outline:none; box-shadow:0 0 0 3px color-mix(in srgb, rgba(128,0,32,.75) 35%, transparent); }
+
+.icon{
+  flex:0 0 auto;
+  display:inline-block;
+}
+
+.icon.play{
+  width:12px;
+  height:14px;
+  background:#fff;
+  clip-path:polygon(0 0, 100% 50%, 0 100%);
+  transform:translateY(0.5px);
+}
+
+.icon.pause{
+  position:relative;
+  width:14px;
+  height:16px;
+}
+.icon.pause::before,
+.icon.pause::after{
+  content:'';
+  position:absolute;
+  top:0;
+  width:4px;
+  height:16px;
+  background:#fff;
+  border-radius:1px;
+}
+.icon.pause::before{ left:0; }
+.icon.pause::after{ right:0; }
+
+@media (max-width:400px){
+  .music-btn{ font-size:.9rem; padding:.5rem .9rem; gap:.5rem; }
+  .icon.play{ width:11px; height:13px; }
+  .icon.pause{ width:12px; height:14px; }
+  .icon.pause::before, .icon.pause::after{ height:14px; }
 }

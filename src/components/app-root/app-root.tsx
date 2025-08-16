@@ -3,7 +3,7 @@ import { Component, h } from '@stencil/core';
 @Component({
   tag: 'app-root',
   styleUrl: 'app-root.css',
-  shadow: false, // 👈 Este es importante pero tiene implicaciones
+  shadow: false, //Este es importante pero tiene implicaciones
 })
 export class AppRoot {
  render() {
@@ -20,6 +20,7 @@ export class AppRoot {
       <section-location />
       <section-rsvp />
       <guest-messages />
+      <section-gifts/>
     </div>
   );
 }
