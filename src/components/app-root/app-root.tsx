@@ -19,6 +19,7 @@ export class AppRoot {
       <countdown-timer />
       <section-location />
       <section-rsvp />
+      <section-message />
       <guest-messages />
       <section-gifts/>
     </div>

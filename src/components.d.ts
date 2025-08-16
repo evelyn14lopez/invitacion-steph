@@ -170,6 +170,8 @@ export namespace Components {
          */
         "hallTitle": string;
     }
+    interface SectionMessage {
+    }
     interface SectionRsvp {
         /**
           * @default 'Código QR de acceso a la boda'
@@ -272,6 +274,12 @@ declare global {
         prototype: HTMLSectionLocationElement;
         new (): HTMLSectionLocationElement;
     };
+    interface HTMLSectionMessageElement extends Components.SectionMessage, HTMLStencilElement {
+    }
+    var HTMLSectionMessageElement: {
+        prototype: HTMLSectionMessageElement;
+        new (): HTMLSectionMessageElement;
+    };
     interface HTMLSectionRsvpElementEventMap {
         "confirmAttendance": void;
         "cancelAttendance": void;
@@ -315,6 +323,7 @@ declare global {
         "section-details": HTMLSectionDetailsElement;
         "section-gifts": HTMLSectionGiftsElement;
         "section-location": HTMLSectionLocationElement;
+        "section-message": HTMLSectionMessageElement;
         "section-rsvp": HTMLSectionRsvpElement;
         "section-timeline": HTMLSectionTimelineElement;
         "section-welcome": HTMLSectionWelcomeElement;
@@ -486,6 +495,8 @@ declare namespace LocalJSX {
          */
         "hallTitle"?: string;
     }
+    interface SectionMessage {
+    }
     interface SectionRsvp {
         "onCancelAttendance"?: (event: SectionRsvpCustomEvent<void>) => void;
         /**
@@ -519,6 +530,7 @@ declare namespace LocalJSX {
         "section-details": SectionDetails;
         "section-gifts": SectionGifts;
         "section-location": SectionLocation;
+        "section-message": SectionMessage;
         "section-rsvp": SectionRsvp;
         "section-timeline": SectionTimeline;
         "section-welcome": SectionWelcome;
@@ -539,6 +551,7 @@ declare module "@stencil/core" {
             "section-details": LocalJSX.SectionDetails & JSXBase.HTMLAttributes<HTMLSectionDetailsElement>;
             "section-gifts": LocalJSX.SectionGifts & JSXBase.HTMLAttributes<HTMLSectionGiftsElement>;
             "section-location": LocalJSX.SectionLocation & JSXBase.HTMLAttributes<HTMLSectionLocationElement>;
+            "section-message": LocalJSX.SectionMessage & JSXBase.HTMLAttributes<HTMLSectionMessageElement>;
             "section-rsvp": LocalJSX.SectionRsvp & JSXBase.HTMLAttributes<HTMLSectionRsvpElement>;
             "section-timeline": LocalJSX.SectionTimeline & JSXBase.HTMLAttributes<HTMLSectionTimelineElement>;
             "section-welcome": LocalJSX.SectionWelcome & JSXBase.HTMLAttributes<HTMLSectionWelcomeElement>;
