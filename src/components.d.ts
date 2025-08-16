@@ -171,6 +171,15 @@ export namespace Components {
         "hallTitle": string;
     }
     interface SectionRsvp {
+        /**
+          * @default 'Código QR de acceso a la boda'
+         */
+        "qrAlt": string;
+        /**
+          * Imagen del QR
+          * @default 'assets/img/qr.jpg'
+         */
+        "qrSrc": string;
     }
     interface SectionTimeline {
     }
@@ -480,10 +489,19 @@ declare namespace LocalJSX {
     interface SectionRsvp {
         "onCancelAttendance"?: (event: SectionRsvpCustomEvent<void>) => void;
         /**
-          * Eventos que puedes escuchar desde app-root
+          * Eventos
          */
         "onConfirmAttendance"?: (event: SectionRsvpCustomEvent<void>) => void;
         "onPendingAttendance"?: (event: SectionRsvpCustomEvent<void>) => void;
+        /**
+          * @default 'Código QR de acceso a la boda'
+         */
+        "qrAlt"?: string;
+        /**
+          * Imagen del QR
+          * @default 'assets/img/qr.jpg'
+         */
+        "qrSrc"?: string;
     }
     interface SectionTimeline {
     }

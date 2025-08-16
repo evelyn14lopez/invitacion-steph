@@ -1,7 +1,7 @@
 :host{
   /* 🎨 Paleta vino fija */
   --wine-main:   #7B2D26;  /* tono principal vino */
-  --wine-dark:   #6b2520;  /* hover/acento un poco más oscuro */
+  --wine-dark:   #6b2520;  /* hover/acento más oscuro */
   --wine-light:  #9c3b33;  /* variante clara */
 
   --primary-color: var(--wine-main);
@@ -39,7 +39,7 @@
   animation:fadeInUp .9s ease-out;
 }
 
-/* Título en vino #7B2D26 */
+/* Título en vino */
 .card h2{
   text-align:center;
   font-family:var(--font-heading);
@@ -75,7 +75,6 @@
   border-radius:28px;
   font-size:1rem;
   font-weight:600;
-  text-decoration:none;
   border:none;
   cursor:pointer;
   box-shadow:0 6px 16px rgba(0,0,0,0.15);
@@ -85,7 +84,7 @@
 .btn:hover{ background:var(--accent-color); transform:translateY(-2px); }
 .btn:active{ transform:scale(.97); }
 
-/* Variantes (todas dentro de la misma gama vino) */
+/* Variantes en misma gama */
 .btn--confirm{ background:var(--wine-main); }
 .btn--cancel { background:var(--wine-light); }
 .btn--pending{ background:color-mix(in srgb, var(--wine-main) 80%, white); }
@@ -97,7 +96,128 @@
   font-size:.9rem;
 }
 
+/* ----- Trigger QR ----- */
+.qr-trigger{
+  margin-top:1rem;
+  display:inline-flex;
+  align-items:center;
+  gap:.45rem;
+  padding:.6rem .9rem;
+  border-radius:999px;
+  background:transparent;
+  border:1.5px solid color-mix(in srgb, var(--primary-color) 60%, white);
+  color:var(--primary-color);
+  font-weight:700;
+  cursor:pointer;
+  transition:background-color .2s ease, transform .12s ease, border-color .2s ease;
+}
+.qr-trigger:hover{
+  background:color-mix(in srgb, var(--primary-color) 14%, transparent);
+  transform:translateY(-1px);
+  border-color:var(--primary-color);
+}
+.qr-icon{ width:18px; height:18px; display:block; }
+
+/* ----- Modal QR ----- */
+.modal{
+  position: fixed;
+  inset: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  min-height: 100dvh;
+  padding: max(env(safe-area-inset-top),16px)
+           max(env(safe-area-inset-right),18px)
+           max(env(safe-area-inset-bottom),16px)
+           max(env(safe-area-inset-left),18px);
+  background: rgba(0,0,0,.40);
+  z-index: 9999;
+}
+.modal.is-open{ display:flex; }
+
+.sheet{
+  width: clamp(320px, 86vw, 520px);
+  max-height: min(84vh, 680px);
+  overflow: auto;
+  scrollbar-gutter: stable both-edges;
+
+  background: rgba(255,255,255,.98);
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: 16px;
+  padding: clamp(1rem, 3.5vw, 1.5rem);
+  box-shadow: 0 20px 44px rgba(0,0,0,.22);
+  text-align: center;
+
+  position: relative;
+  animation: pop .18s ease-out;
+}
+
+.close{
+  position:absolute;
+  top:.35rem; right:.5rem;
+  width:32px; height:32px;
+  border:none; border-radius:999px;
+  background:transparent; color:#333;
+  font-size:1.35rem; cursor:pointer;
+}
+
+.title{
+  margin:.2rem 0 .35rem;
+  font-family:var(--font-heading);
+  color:var(--primary-color);
+  font-size:clamp(1.35rem, 4.5vw, 1.6rem);
+}
+.subtitle{
+  margin:0 0 .9rem;
+  color:#5c6468;
+  font-size:clamp(.95rem, 3.5vw, 1rem);
+}
+
+.qr-wrap{
+  margin:.25rem auto .5rem;
+  width:min(360px, 78%);
+}
+.qr-img{
+  width:100%;
+  display:block;
+  border-radius:14px;
+  box-shadow:0 12px 26px rgba(0,0,0,.15);
+  background:#fff;
+}
+.caption{
+  margin-top:.45rem;
+  font-size:.9rem;
+  color:#6b7a80;
+}
+
+.qr-actions{
+  margin-top:.75rem;
+  display:flex;
+  justify-content:center;
+}
+.download{
+  display:inline-block;
+  padding:.7rem 1rem;
+  border-radius:12px;
+  background:var(--primary-color);
+  color:#fff;
+  font-weight:700;
+  text-decoration:none;
+  box-shadow:0 10px 22px rgba(0,0,0,.12);
+  transition:background-color .2s ease, transform .12s ease;
+}
+.download:hover{ background:var(--accent-color); transform:translateY(-1px); }
+
+@keyframes pop{
+  from{ transform:translateY(6px); opacity:.9; }
+  to  { transform:translateY(0);  opacity:1; }
+}
 @keyframes fadeInUp{
   from{ opacity:0; transform:translateY(24px); }
   to  { opacity:1; transform:translateY(0); }
+}
+
+/* responsive */
+@media (min-width: 768px){
+  .sheet{ width: 520px; }
 }
