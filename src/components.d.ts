@@ -13,6 +13,11 @@ export namespace Components {
     interface CountdownTimer {
     }
     interface EnvelopeIntro {
+        /**
+          * Contraseña requerida (personalizable como atributo: <envelope-intro password="XXXX" /> )
+          * @default 'Steph-2025'
+         */
+        "password": string;
     }
     interface FloralIntro {
         /**
@@ -297,6 +302,11 @@ declare namespace LocalJSX {
     interface CountdownTimer {
     }
     interface EnvelopeIntro {
+        /**
+          * Contraseña requerida (personalizable como atributo: <envelope-intro password="XXXX" /> )
+          * @default 'Steph-2025'
+         */
+        "password"?: string;
     }
     interface FloralIntro {
         /**

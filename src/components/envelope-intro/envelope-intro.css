@@ -2,18 +2,16 @@
   display: block;
 }
 
+/* === Overlay / Intro (sin cambios relevantes) === */
 .envelope-wrapper {
   position: fixed;
   inset: 0;
   z-index: 9999;
 
   background-color: var(--secondary-color, #f5f9f6);
-
-  /* Si quieres un fondo floral, descomenta:*/
-     background-image: var(--app-bg-image, url('/assets/img/flores.png'));
-     background-size: cover;
-     background-position: center;
-
+  background-image: var(--app-bg-image, url('/assets/img/flores.png'));
+  background-size: cover;
+  background-position: center;
 
   display: flex;
   justify-content: center;
@@ -21,7 +19,6 @@
   padding: 1rem;
 
   overscroll-behavior: contain;
-
 
   opacity: 1;
   transition: opacity 0.5s ease;
@@ -65,7 +62,6 @@
   100% { transform: scale(1); }
 }
 
-/* Responsive */
 @media (max-width: 480px) {
   .envelope .emoji {
     font-size: 3rem;
@@ -73,4 +69,86 @@
   .envelope p {
     font-size: 1.3rem;
   }
+}
+
+/* === Diálogo de contraseña (nuevo, scoped al Shadow DOM) === */
+.password-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 10000; /* encima del sobre */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px);
+}
+
+.password-card {
+  width: min(420px, 92vw);
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(0,0,0,.2);
+  padding: 1.25rem 1rem 1rem;
+  font-family: var(--font-body, 'Georgia', serif);
+}
+
+.password-title {
+  margin: 0 0 .5rem 0;
+  font-size: 1.25rem;
+  text-align: center;
+  color: var(--primary-color, #4FA3B0);
+  font-family: var(--font-heading, 'Great Vibes', cursive);
+}
+
+.password-desc {
+  margin: 0 0 1rem 0;
+  font-size: .95rem;
+  text-align: center;
+  color: #333;
+}
+
+.password-row {
+  display: flex;
+  gap: .5rem;
+  margin-bottom: .75rem;
+}
+
+.password-input {
+  flex: 1;
+  padding: .6rem .75rem;
+  font-size: 1rem;
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;
+  outline: none;
+}
+
+.password-input:focus {
+  border-color: var(--primary-color, #4FA3B0);
+}
+
+.btn {
+  padding: .6rem .9rem;
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: .95rem;
+}
+
+.btn-primary {
+  background: var(--primary-color, #4FA3B0);
+  color: #fff;
+}
+
+.btn-secondary {
+  background: #f1f1f1;
+  color: #333;
+}
+
+.error {
+  color: #b00020;
+  font-size: .9rem;
+  text-align: center;
+  min-height: 1.2em; /* evita salto al mostrar/ocultar */
 }
