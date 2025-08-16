@@ -1,9 +1,10 @@
 :host{
   display:block;
-  height:100dvh;
+  min-height:100svh;            /* antes: height:100dvh */
   scroll-snap-align:start;
   scroll-snap-stop:always;
   box-sizing:border-box;
+  padding-block: clamp(12px, 2vh, 24px);  /* colchón superior e inferior */
 }
 
 .timeline-section{
@@ -132,7 +133,6 @@
 .reveal .icon{ transform:scale(.96); transition:transform .6s ease; }
 .in-view{ opacity:1; transform:translateY(0); }
 .in-view .icon{ transform:scale(1); }
-
 
 .events li:nth-child(2).reveal { transition-delay:.05s; }
 .events li:nth-child(3).reveal { transition-delay:.10s; }
