@@ -1,31 +1,30 @@
 :host {
   display: block;
-  height: auto;
+  min-height: 100svh;
   scroll-snap-align: start;
   scroll-snap-stop: always;
   box-sizing: border-box;
   margin-bottom: clamp(40px, 8vw, 80px);
+  padding-block: clamp(16px, 5vh, 40px);
+  isolation: isolate;
 }
 
 .details {
-  width: 100%;
+  min-height: calc(100svh - clamp(16px, 5vh, 40px) * 2);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 2rem 1rem clamp(24px, 6vw, 48px);
-  background: transparent !important;
+  justify-content: center;
 }
 
 .card {
   z-index: 1;
-  width: min(680px, 92%);
+  width: min(600px, 85%);   /* antes 680px, 92% */
   background-color: rgba(255, 255, 255, 0.7);
   padding: clamp(1.25rem, 4vw, 2rem);
   border-radius: 16px;
   box-shadow: var(--box-shadow);
   animation: fadeInUp .9s ease-out;
-  margin-bottom: 1.5rem;
+  margin: 0 auto 1.5rem;    /* centrado horizontal */
 }
 
 .card h2 {
@@ -33,6 +32,7 @@
   color: var(--primary-color);
   font-size: clamp(2rem, 6vw, 2.5rem);
   margin: 0 0 .9rem;
+  text-align: center;       /* centrado */
 }
 
 .list {
@@ -41,6 +41,7 @@
   padding: 0;
   display: grid;
   gap: .6rem;
+  text-align: center;       /* centra el contenido */
 }
 
 .list li {
@@ -48,9 +49,23 @@
   font-size: clamp(1rem, 3.4vw, 1.2rem);
   color: var(--text-color);
   line-height: 1.6;
+
+  display: flex;            /* asegura centrado en ícono + texto */
+  justify-content: center;
+  align-items: center;
+  gap: .4rem;
 }
 
-.list li strong { font-weight: 700; }
+.list li strong {
+  font-weight: 700;
+}
+
+/* fecha destacada */
+.list li:first-child strong {
+  font-size: clamp(1.2rem, 4.2vw, 1.5rem);
+  font-weight: 700;
+  color: var(--primary-color);
+}
 
 .photo {
   margin: 0 auto;

@@ -1,18 +1,15 @@
 :host{
-  /* Paleta vino */
-  --wine-900: #5d1329;
-  --wine-800: #6b1832;
-  --wine-700: #7b1e3a;
-  --wine-600: #902846;
-  --wine-500: #a8324a;
-  --wine-400: #c94f6d;
+  /* 🎨 Paleta vino fija */
+  --wine-main:   #7B2D26;  /* tono principal vino */
+  --wine-dark:   #6b2520;  /* hover/acento un poco más oscuro */
+  --wine-light:  #9c3b33;  /* variante clara */
 
-  --primary-color: var(--wine-700);
-  --accent-color:  var(--wine-600);
+  --primary-color: var(--wine-main);
+  --accent-color:  var(--wine-dark);
 
-  display:flex;                  /* ⚡ ahora el host es flex */
-  align-items:center;            /* centro vertical */
-  justify-content:center;        /* centro horizontal */
+  display:flex;
+  align-items:center;
+  justify-content:center;
   min-height:100svh;
   scroll-snap-align:start;
   scroll-snap-stop:always;
@@ -42,6 +39,7 @@
   animation:fadeInUp .9s ease-out;
 }
 
+/* Título en vino #7B2D26 */
 .card h2{
   text-align:center;
   font-family:var(--font-heading);
@@ -67,9 +65,10 @@
   margin-top:1.25rem;
 }
 
+/* Botones con vino unificado */
 .btn{
   width:100%;
-  background-color:var(--primary-color);
+  background:var(--primary-color);
   color:#fff;
   font-family:var(--font-body);
   padding:.9rem 1.2rem;
@@ -83,19 +82,13 @@
   transition:background-color .25s ease, transform .15s ease;
 }
 
-.btn:hover{
-  background-color:var(--accent-color);
-  transform:translateY(-2px);
-}
+.btn:hover{ background:var(--accent-color); transform:translateY(-2px); }
+.btn:active{ transform:scale(.97); }
 
-.btn:active{
-  transform:scale(.97);
-}
-
-/* Variantes */
-.btn--confirm{ background:var(--wine-700); }
-.btn--cancel{  background:var(--wine-500); }
-.btn--pending{ background:var(--wine-400); }
+/* Variantes (todas dentro de la misma gama vino) */
+.btn--confirm{ background:var(--wine-main); }
+.btn--cancel { background:var(--wine-light); }
+.btn--pending{ background:color-mix(in srgb, var(--wine-main) 80%, white); }
 
 .note{
   display:block;
@@ -106,5 +99,5 @@
 
 @keyframes fadeInUp{
   from{ opacity:0; transform:translateY(24px); }
-  to{ opacity:1; transform:translateY(0); }
+  to  { opacity:1; transform:translateY(0); }
 }

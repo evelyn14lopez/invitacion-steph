@@ -18,8 +18,6 @@ export class SectionDetails {
           <h2>El gran día</h2>
           <ul class="list">
             <li>📅 <strong>Sábado 06 de Septiembre 2025</strong></li>
-            <li>📍 Iglesia: Parroquia de San Francisco De Asís</li>
-            <li>🕓 5:00 p.m.</li>
           </ul>
         </div>
 

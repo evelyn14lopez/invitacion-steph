@@ -1,10 +1,11 @@
 :host{
   display:block;
-  min-height:100svh;            /* antes: height:100dvh */
+  min-height:100svh;
   scroll-snap-align:start;
   scroll-snap-stop:always;
   box-sizing:border-box;
-  padding-block: clamp(12px, 2vh, 24px);  /* colchón superior e inferior */
+  padding-block: clamp(12px, 2vh, 24px);
+  isolation: isolate;   /* opcional */
 }
 
 .timeline-section{
